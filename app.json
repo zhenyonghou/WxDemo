@@ -1,0 +1,49 @@
+{
+  "pages": [
+        "pages/firstPage/firstPage",
+        "pages/secondPage/secondPage",
+        "pages/thirdPage/thirdPage",
+        "pages/forthPage/forthPage",
+        "pages/imageDetailPage/imageDetailPage"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#353038",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "appMagics",
+        "backgroundColor": "#111",
+        "backgroundTextStyle": "light"
+    },
+	"tabBar": {
+        "color": "#B2B2B2",
+        "selectedColor": "#00C516",
+        "backgroundColor": "#F4F4F4",
+        "borderStyle": "white",
+        "list": [
+            {
+                "pagePath": "pages/firstPage/firstPage",
+                "text": "第1页",
+                "iconPath": "image/tab_icon.png",
+                "selectedIconPath": "image/tab_icon_hl.png"
+            },
+            {
+                "pagePath": "pages/secondPage/secondPage",
+                "text": "第2页",
+                "iconPath": "image/tab_icon.png",
+                "selectedIconPath": "image/tab_icon_hl.png"
+            },
+            {
+                "pagePath": "pages/thirdPage/thirdPage",
+                "text": "第3页",
+                "iconPath": "image/tab_icon.png",
+                "selectedIconPath": "image/tab_icon_hl.png"
+            },
+            {
+                "pagePath": "pages/forthPage/forthPage",
+                "text": "第4页",
+                "iconPath": "image/tab_icon.png",
+                "selectedIconPath": "image/tab_icon_hl.png"
+            }
+        ]
+    },
+    "debug": true
+}

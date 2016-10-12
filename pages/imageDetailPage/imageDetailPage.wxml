@@ -1,0 +1,9 @@
+<view class="container">
+    <swiper class="swiper-view" current="{{selectedIndex}}">
+        <block wx:for="{{selectedPhotos}}">
+            <swiper-item>
+                <image src="{{item}}" class="slide-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
+</view>
