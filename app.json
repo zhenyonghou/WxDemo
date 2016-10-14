@@ -3,14 +3,15 @@
         "pages/firstPage/firstPage",
         "pages/secondPage/secondPage",
         "pages/thirdPage/thirdPage",
-        "pages/forthPage/forthPage",
-        "pages/imageDetailPage/imageDetailPage"
+        "pages/my/my",
+        "pages/imageDetailPage/imageDetailPage",
+        "pages/birthPage/birthPage"
     ],
     "window": {
         "navigationBarBackgroundColor": "#353038",
         "navigationBarTextStyle": "white",
         "navigationBarTitleText": "appMagics",
-        "backgroundColor": "#111",
+        "backgroundColor": "rgb(231, 228, 236)",
         "backgroundTextStyle": "light"
     },
 	"tabBar": {
@@ -22,26 +23,26 @@
             {
                 "pagePath": "pages/firstPage/firstPage",
                 "text": "第1页",
-                "iconPath": "image/tab_icon.png",
-                "selectedIconPath": "image/tab_icon_hl.png"
+                "iconPath": "images/tab_icon.png",
+                "selectedIconPath": "images/tab_icon_hl.png"
             },
             {
                 "pagePath": "pages/secondPage/secondPage",
                 "text": "第2页",
-                "iconPath": "image/tab_icon.png",
-                "selectedIconPath": "image/tab_icon_hl.png"
+                "iconPath": "images/tab_icon.png",
+                "selectedIconPath": "images/tab_icon_hl.png"
             },
             {
                 "pagePath": "pages/thirdPage/thirdPage",
                 "text": "第3页",
-                "iconPath": "image/tab_icon.png",
-                "selectedIconPath": "image/tab_icon_hl.png"
+                "iconPath": "images/tab_icon.png",
+                "selectedIconPath": "images/tab_icon_hl.png"
             },
             {
-                "pagePath": "pages/forthPage/forthPage",
-                "text": "第4页",
-                "iconPath": "image/tab_icon.png",
-                "selectedIconPath": "image/tab_icon_hl.png"
+                "pagePath": "pages/my/my",
+                "text": "我",
+                "iconPath": "images/tab_icon.png",
+                "selectedIconPath": "images/tab_icon_hl.png"
             }
         ]
     },
