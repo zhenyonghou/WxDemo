@@ -46,7 +46,7 @@ Page({
     var preMonth = date.getMonth() - 1;
     if (preMonth < 0) {
       preMonth = 11;
-      yearOfPreMonth = yearOfCurrentMonth - 1;
+      yearOfPreMonth = date.getFullYear() - 1;
     }
     this.daysOfPreMonth = calendar.getDaysForMonth(yearOfPreMonth, preMonth);
   },
@@ -56,31 +56,23 @@ Page({
     var nextMonth = date.getMonth() + 1;
     if (nextMonth > 11) {
       nextMonth = 0;
-      yearOfNextMonth = currentYear + 1;
+      yearOfNextMonth = date.getFullYear() + 1;
     }
     this.daysOfNextMonth = calendar.getDaysForMonth(yearOfNextMonth, nextMonth);
   },
 
-  moveToPrevious() {
+  moveToPrevMonth() {
     this.daysOfNextMonth = this.daysOfCurrentMonth;
     this.daysOfCurrentMonth = this.daysOfPreMonth;
     this.buildPreMonth(this.daysOfCurrentMonth.firstDay);
-    this.setData({
-      daysOfPreMonth: this.daysOfPreMonth,
-      daysOfCurrentMonth: this.daysOfCurrentMonth,
-      daysOfNextMonth: this.daysOfNextMonth,
-    });
+    this.refreshCalendar(this.daysOfPreMonth, this.daysOfCurrentMonth, this.daysOfNextMonth);
   },
 
-  moveToNext() {
+  moveToNextMonth() {
     this.daysOfPreMonth = this.daysOfCurrentMonth;
     this.daysOfCurrentMonth = this.daysOfNextMonth;
     this.buildNextMonth(this.daysOfCurrentMonth.firstDay);
-    this.setData({
-      daysOfPreMonth: this.daysOfPreMonth,
-      daysOfCurrentMonth: this.daysOfCurrentMonth,
-      daysOfNextMonth: this.daysOfNextMonth,
-    });
+    this.refreshCalendar(this.daysOfPreMonth, this.daysOfCurrentMonth, this.daysOfNextMonth);
   },
 
   refreshCalendar: function(daysOfPreMonth, daysOfCurrentMonth, daysOfNextMonth) {
@@ -99,7 +91,8 @@ Page({
       dataForRenderMonth: {cellArray: cellArray, numberOfLines: numberOfLines},
       daysOfCurrentMonth: this.daysOfCurrentMonth,
       margin : margin,
-      itemSize : itemSize
+      itemSize : itemSize,
+      title: this.daysOfCurrentMonth.firstDay.getFullYear() + '年' + (this.daysOfCurrentMonth.firstDay.getMonth() + 1) + '月'
     });
   },
 
@@ -126,5 +119,11 @@ Page({
   },
   onPullDownRefresh: function() {
     // Do something when pull down
+  },
+  onTouchPrevButton: function() {
+    this.moveToPrevMonth();
+  },
+  onTouchNextButton: function() {
+    this.moveToNextMonth();
   }
 })

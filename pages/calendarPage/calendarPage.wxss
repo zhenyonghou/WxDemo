@@ -1,11 +1,39 @@
 .calendar{
-    background-color: rgb(255, 190, 207);
-    margin: 44px 44px;
+    
+    margin: 10px 44px;
+}
+
+.calendar-header{
+    display: flex;
+    flex-direction: cloumn;
+    justify-content: space-between;
+    height: 38px;
+    background-color: #353038;
+}
+
+.calendar-title{
+    color: white;
+    font: 12px;
+    line-height: 38px;
+}
+
+.calendar-prev-btn{
+    color: white;
+    font-size: 12px;
+    padding: 0 5px;
+    line-height: 38px;
+}
+
+.calendar-next-btn{
+    color: white;
+    font-size: 12px;
+    padding: 0 5px;
+    line-height: 38px;
 }
 
 .clendar-week{
     display: flex;
-    flex-direction: row;
+    flex-direction: cloumn;
     justify-content: space-around;
     height: 20px;
     background-color: yellow;
@@ -16,8 +44,14 @@
     text-align: center;
 }
 
+.calendar-days{
+    display: flex;
+    flex-direction: cloumn;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .day-cell{
-    display:inline-block;
     text-align: center;
     background-color: rgb(255, 190, 207);
 }
