@@ -26,5 +26,9 @@ Page({
   },
   onPullDownRefresh: function() {
     // Do something when pull down
-  },  
+  },
+  onImageLoad: function(event) {
+    var obj = event.detail;
+    console.log(obj);
+  }
 })

@@ -12,10 +12,10 @@
 .picker-title {
     display: inline-block;
     font-size: 14px;
-    color:#111;
+    color:#939393;
 }
 
-.picker-date {
+.picker-selector {
     display: inline-block;
     font-size: 14px;
     color:#111;

@@ -35,6 +35,7 @@ App({
     globalData:{
         systemInfo:{},
         userInfo:null,
+        menstruationInfo: null,
         selectedLocalPhotos:[]
     }
 })

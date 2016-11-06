@@ -1,8 +1,0 @@
-<view class="container">
-    <picker mode="date" start="{{startDate}}" end="{{endDate}}" value="{{defaultDate}}" bindchange="onDateChange">
-        <view class="picker">
-            <view class="picker-title">选择出生日期: </view>
-            <view class="picker-date">{{userBirth ? userBirth : "请选择"}}</view>
-        </view>
-    </picker>
-</view>

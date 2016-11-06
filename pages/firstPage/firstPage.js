@@ -9,8 +9,18 @@ Page({
     // Do something when page ready.
   },
   onShow: function() {
-    // Do something when page show.
-    // wx.setNavigationBarTitle = "第1页";
+    // wx.navigateTo({
+    //   url: '../profilePage/profilePage',
+    //   success: function(res){
+    //     // success
+    //   },
+    //   fail: function() {
+    //     // fail
+    //   },
+    //   complete: function() {
+    //     // complete
+    //   }
+    // })
   },
   onHide: function() {
     // Do something when page hide.

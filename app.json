@@ -1,11 +1,12 @@
 {
   "pages": [
         "pages/firstPage/firstPage",
-        "pages/secondPage/secondPage",
-        "pages/thirdPage/thirdPage",
-        "pages/my/my",
-        "pages/imageDetailPage/imageDetailPage",
-        "pages/birthPage/birthPage"
+        "pages/calendarPage/calendarPage",
+        "pages/profilePage/profilePage",
+        "pages/settingLastDayPage/settingLastDayPage",
+        "pages/settingMensCycle/settingMensCycle",
+        "pages/settingNumberOfDays/settingNumberOfDays",
+        "pages/imageDetailPage/imageDetailPage"
     ],
     "window": {
         "navigationBarBackgroundColor": "#353038",
@@ -27,19 +28,13 @@
                 "selectedIconPath": "images/tab_icon_hl.png"
             },
             {
-                "pagePath": "pages/secondPage/secondPage",
+                "pagePath": "pages/calendarPage/calendarPage",
                 "text": "第2页",
                 "iconPath": "images/tab_icon.png",
                 "selectedIconPath": "images/tab_icon_hl.png"
             },
             {
-                "pagePath": "pages/thirdPage/thirdPage",
-                "text": "第3页",
-                "iconPath": "images/tab_icon.png",
-                "selectedIconPath": "images/tab_icon_hl.png"
-            },
-            {
-                "pagePath": "pages/my/my",
+                "pagePath": "pages/profilePage/profilePage",
                 "text": "我",
                 "iconPath": "images/tab_icon.png",
                 "selectedIconPath": "images/tab_icon_hl.png"
