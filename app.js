@@ -1,6 +1,11 @@
+import MensInfoMgr from './utils/mensInfoMgr.js';
+var mensInfoMgr = MensInfoMgr.getInstance();
+
 App({
     onLaunch: function() {
         // 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
+        mensInfoMgr.loadData();
+
         var that = this;
         wx.getSystemInfo({
             success: function(res) {
@@ -35,7 +40,7 @@ App({
     globalData:{
         systemInfo:{},
         userInfo:null,
-        menstruationInfo: null,
+        // menstruationInfo: null,
         selectedLocalPhotos:[]
     }
 })

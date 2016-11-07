@@ -1,11 +1,6 @@
-class MMMensesCalculator {
-    constructor() {
-        this.lastMensesDate = null;
-        this.cycle = null;
-        this.menses = 0;
-    }
 
-    init(lastMensesDate, cycle, menses) {
+class MMMensesCalculator {
+    constructor(lastMensesDate, cycle, menses) {
         this.lastMensesDate = lastMensesDate;
         this.cycle = cycle;
         this.menses = menses;
@@ -23,7 +18,7 @@ class MMMensesCalculator {
             console.log("这是月经期，要注意经期卫生，避免性事");
             ret = 1;
         } else if (escapedLastMenses >= this.menses && escapedLastMenses <= (this.cycle - 20)) {
-            coonsole.log("这是安全期，性事一般不会受孕，您放心吧");
+            console.log("这是安全期，性事一般不会受孕，您放心吧");
             ret = 3;
         } else if (escapedLastMenses >= (this.cycle - 19) && escapedLastMenses <= (this.cycle - 10)) {
             console.log("这是危险期，亦称排卵期，性事受孕可能性大，千万要注意");
@@ -35,6 +30,18 @@ class MMMensesCalculator {
             console.log("经期算法错误！");
         }
         return ret;
+    }
+
+    getDaysTypeArray(monthInfo) {
+        let year = monthInfo.firstDay.getFullYear();
+        let month = monthInfo.firstDay.getMonth();
+        var typeArray = new Array(monthInfo.numberOfDays);
+        for (let k = 0; k < monthInfo.numberOfDays; ++k) {
+            let date = new Date(year, month, k + 1);
+            let dayType = this.calcDate(date);
+            typeArray[k] = dayType;
+        }
+        return typeArray;
     }
 };
 

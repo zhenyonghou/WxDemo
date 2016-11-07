@@ -5,6 +5,11 @@ function formatDate(date) {
     return [year, month, day].map(formatNumber).join('-')
 }
 
+function dateFromString(str) {
+  var arr = str.split('-');
+  return new Date(parseInt(arr[0]), parseInt(arr[1]) - 1, parseInt(arr[2]));
+}
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -25,5 +30,6 @@ function formatNumber(n) {
 
 module.exports = {
   formatTime: formatTime,
-  formatDate: formatDate
+  formatDate: formatDate,
+  dateFromString: dateFromString
 }

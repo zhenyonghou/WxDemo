@@ -27,10 +27,25 @@
                     </view>
                 </block>
                 <block wx:if="{{index >= monthInfo.weekNumberOfFirstDay && index < monthInfo.weekNumberOfFirstDay + monthInfo.numberOfDays}}">
-                    <view class="day-cell innerDay-cell" 
-                        style="width: {{itemSize}}px; height: {{itemSize}}px; margin: {{margin}}px; line-height: {{itemSize}}px">
-                      {{index - monthInfo.weekNumberOfFirstDay + 1}}
-                    </view>
+                    <block wx:if="{{dataForRenderMonth.typeArray[index - monthInfo.weekNumberOfFirstDay] === 1}}">
+                        <view class="day-cell innerDay-cell day-type1" 
+                              style="width: {{itemSize}}px; height: {{itemSize}}px; margin: {{margin}}px; line-height: {{itemSize}}px">
+                              {{index - monthInfo.weekNumberOfFirstDay + 1}}
+                        </view>
+                    </block>
+                    <block wx:if="{{dataForRenderMonth.typeArray[index - monthInfo.weekNumberOfFirstDay] === 2}}">
+                        <view class="day-cell innerDay-cell day-type2" 
+                              style="width: {{itemSize}}px; height: {{itemSize}}px; margin: {{margin}}px; line-height: {{itemSize}}px">
+                              {{index - monthInfo.weekNumberOfFirstDay + 1}}
+                        </view>
+                    </block>
+                    <block wx:if="{{dataForRenderMonth.typeArray[index - monthInfo.weekNumberOfFirstDay] === 3}}">
+                        <view class="day-cell innerDay-cell day-type3" 
+                              style="width: {{itemSize}}px; height: {{itemSize}}px; margin: {{margin}}px; line-height: {{itemSize}}px">
+                              {{index - monthInfo.weekNumberOfFirstDay + 1}}
+                        </view>
+                    </block>
+                    
                 </block>
           </block>
         </view>

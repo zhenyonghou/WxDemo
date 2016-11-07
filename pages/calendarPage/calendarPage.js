@@ -1,6 +1,11 @@
+import utils from '../../utils/utils.js';
 import {MMMonthInfo, MMCalendar} from '../../utils/MMCalendar.js'
+import MMMensesCalculator from '../../utils/MMMensesCalculator.js'
+import MensInfoMgr from '../../utils/mensInfoMgr.js';
+var mensInfoMgr = MensInfoMgr.getInstance();
 
 var calendar = new MMCalendar();
+var mensesCalc = null;
 
 Page({
   data: {
@@ -24,8 +29,10 @@ Page({
       cellArray.push(k);
     }
 
+    let typeArray = mensesCalc.getDaysTypeArray(calendar.currentMonthInfo);
+
     this.setData({
-      dataForRenderMonth: {cellArray: cellArray},
+      dataForRenderMonth: {cellArray: cellArray, typeArray: typeArray},
       monthInfo: calendar.currentMonthInfo,
       title: calendar.currentMonthInfo.getTitle(),
       margin : margin,
@@ -35,8 +42,8 @@ Page({
 
   onLoad: function(options) {
     // Do some initialize when page load.
+    mensesCalc = new MMMensesCalculator(utils.dateFromString(mensInfoMgr.lastDate), mensInfoMgr.cycle, mensInfoMgr.numberOfDays);
     calendar.buildDays();
-
     this.refreshCalendar(calendar);
   },
   onReady: function() {

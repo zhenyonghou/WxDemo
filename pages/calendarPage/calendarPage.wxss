@@ -63,3 +63,15 @@
 .outerDay-cell{
     color: rgb(255, 190, 207);
 }
+
+.day-type1{
+    color: black;
+}
+
+.day-type2{
+    color: red;
+}
+
+.day-type3{
+    color: green;
+}

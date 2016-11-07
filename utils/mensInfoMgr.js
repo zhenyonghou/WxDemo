@@ -20,19 +20,19 @@ class MensInfoMgr {
     return instance;
   }
 
-  loadData(success, failCallback) {
+  loadData(success, fail) {
       var that = this;
       wx.getStorage({
         key: "kMenstruationInfo",
         success: function(res) {
-          success(res.data);
+          success && success(res.data);
 
           that.lastDate = res.data.lastDate;
           that.numberOfDays = res.data.numberOfDays;
           that.cycle = res.data.cycle;
         },
         fail: function() {
-          failCallback && failCallback();
+          fail && fail();
         }
     })
   }
