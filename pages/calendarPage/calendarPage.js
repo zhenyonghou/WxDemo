@@ -1,14 +1,8 @@
-import MMCalendar from '../../utils/MMCalendar.js'
+import {MMMonthInfo, MMCalendar} from '../../utils/MMCalendar.js'
+
 var calendar = new MMCalendar();
 
 Page({
-  today: new Date(),
-  offsetOfMonth: 0,
-
-  daysOfPreMonth: null,
-  daysOfCurrentMonth: null,
-  daysOfNextMonth: null,
-
   data: {
     daysOfPreMonth: null,
     daysOfCurrentMonth: null,
@@ -16,93 +10,34 @@ Page({
     dataForRenderMonth: null,
   },
 
-  buildDays: function() {
-    // 当前月
-    var yearOfCurrentMonth = this.today.getFullYear();
-    var currentMonth = this.today.getMonth() + this.offsetOfMonth; // 0-11
-
-    if(currentMonth < 0) {
-      while(currentMonth < 0) {
-        currentMonth += 12;
-        yearOfCurrentMonth - 1;
-      }
-    } else if (currentMonth > 11) {
-      while(currentMonth > 11) {
-        currentMonth -= 12;
-        yearOfCurrentMonth + 1;
-      }
-    }
-    this.daysOfCurrentMonth = calendar.getDaysForMonth(yearOfCurrentMonth, currentMonth);
-
-    var dayInCurrentMonth = this.daysOfCurrentMonth.firstDay;
-    this.buildPreMonth(dayInCurrentMonth);
-    this.buildNextMonth(dayInCurrentMonth);
-
-    this.refreshCalendar(this.daysOfPreMonth, this.daysOfCurrentMonth, this.daysOfNextMonth);
-  },
-
-  buildPreMonth(date) {
-    var yearOfPreMonth = date.getFullYear();
-    var preMonth = date.getMonth() - 1;
-    if (preMonth < 0) {
-      preMonth = 11;
-      yearOfPreMonth = date.getFullYear() - 1;
-    }
-    this.daysOfPreMonth = calendar.getDaysForMonth(yearOfPreMonth, preMonth);
-  },
-
-  buildNextMonth(date) {
-    var yearOfNextMonth = date.getFullYear();
-    var nextMonth = date.getMonth() + 1;
-    if (nextMonth > 11) {
-      nextMonth = 0;
-      yearOfNextMonth = date.getFullYear() + 1;
-    }
-    this.daysOfNextMonth = calendar.getDaysForMonth(yearOfNextMonth, nextMonth);
-  },
-
-  moveToPrevMonth() {
-    this.daysOfNextMonth = this.daysOfCurrentMonth;
-    this.daysOfCurrentMonth = this.daysOfPreMonth;
-    this.buildPreMonth(this.daysOfCurrentMonth.firstDay);
-    this.refreshCalendar(this.daysOfPreMonth, this.daysOfCurrentMonth, this.daysOfNextMonth);
-  },
-
-  moveToNextMonth() {
-    this.daysOfPreMonth = this.daysOfCurrentMonth;
-    this.daysOfCurrentMonth = this.daysOfNextMonth;
-    this.buildNextMonth(this.daysOfCurrentMonth.firstDay);
-    this.refreshCalendar(this.daysOfPreMonth, this.daysOfCurrentMonth, this.daysOfNextMonth);
-  },
-
-  refreshCalendar: function(daysOfPreMonth, daysOfCurrentMonth, daysOfNextMonth) {
+  refreshCalendar: function(calendar) {
     var windowWidth = getApp().globalData.systemInfo.windowWidth - 44 * 2;
     var itemCountEachRow = 7;
 	  var margin = 0;
     var itemSize = (windowWidth - itemCountEachRow * 2 * margin) / itemCountEachRow;
 
-    var numberOfLines = this.numberOfLinesForMonth(this.daysOfCurrentMonth);
+    var numberOfLines = calendar.currentMonthInfo.numberOfLines();
+
+    // render days
     var cellArray = [];
     for (var k = 0; k < numberOfLines * 7; ++k) {
       cellArray.push(k);
     }
 
     this.setData({
-      dataForRenderMonth: {cellArray: cellArray, numberOfLines: numberOfLines},
-      daysOfCurrentMonth: this.daysOfCurrentMonth,
+      dataForRenderMonth: {cellArray: cellArray},
+      monthInfo: calendar.currentMonthInfo,
+      title: calendar.currentMonthInfo.getTitle(),
       margin : margin,
       itemSize : itemSize,
-      title: this.daysOfCurrentMonth.firstDay.getFullYear() + '年' + (this.daysOfCurrentMonth.firstDay.getMonth() + 1) + '月'
     });
-  },
-
-  numberOfLinesForMonth: function(daysOfMonth) {
-    return Math.ceil((daysOfMonth.numberOfDays + daysOfMonth.indexOfFirstDay) / 7);
   },
 
   onLoad: function(options) {
     // Do some initialize when page load.
-    this.buildDays();
+    calendar.buildDays();
+
+    this.refreshCalendar(calendar);
   },
   onReady: function() {
     // Do something when page ready.
@@ -121,9 +56,11 @@ Page({
     // Do something when pull down
   },
   onTouchPrevButton: function() {
-    this.moveToPrevMonth();
+    calendar.moveToPrevMonth();
+    this.refreshCalendar(calendar);
   },
   onTouchNextButton: function() {
-    this.moveToNextMonth();
+    calendar.moveToNextMonth();
+    this.refreshCalendar(calendar);
   }
 })
